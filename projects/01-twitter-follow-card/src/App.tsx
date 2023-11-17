@@ -4,24 +4,24 @@ import {TwitterFollowCard} from "./TwitterFollowCard.tsx";
 
 const users = [
   {
-    username: 'midudev',
-    name: 'Miguel Ángel Durán',
-    isFollowing: true
-  },
-  {
-    username: 'kikobeats',
-    name: 'Kiko Beats',
-    isFollowing: false
-  },
-  {
     username: 'SolanaFndn',
     name: 'Solana Foundation',
+    isFollowing: false
+  },
+  {
+    username: 'imdogefather',
+    name: 'DogeFather (🦴)',
     isFollowing: true
   },
   {
-    username: 'twitter',
-    name: 'Twitter',
+    username: 'DegenApeAcademy',
+    name: 'Degenerate Ape Academy',
     isFollowing: false
+  },
+  {
+    username: 'graydomi',
+    name: 'Graydomi',
+    isFollowing: true
   }
 ]
 
