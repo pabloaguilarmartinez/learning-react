@@ -61,15 +61,24 @@ function App() {
 
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
-      alert('ganador');
       setWinner(newWinner);
     } else {
       const newTurn: string = turn === TURNS.X ? TURNS.O : TURNS.X;
       setTurn(newTurn);
     }
   };
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TURNS.X);
+    setWinner(null);
+  };
+
   return (
     <main className="board">
+      <button onClick={resetGame}>
+        Reset game
+      </button>
       <h1>Tic tac toe</h1>
       <section className="game">
         {
@@ -88,13 +97,53 @@ function App() {
       </section>
 
       <section className="turn">
-        <Square isSelected={turn === TURNS.X} updateBoard={function (): void {
-          throw new Error('Function not implemented.');
-        }}>{TURNS.X}</Square>
-        <Square isSelected={turn === TURNS.O} updateBoard={function (): void {
-          throw new Error('Function not implemented.');
-        }}>{TURNS.O}</Square>
+        <Square
+          isSelected={turn === TURNS.X}
+          updateBoard={function (): void {
+            throw new Error('Function not implemented.');
+          }}
+        >
+          {TURNS.X}
+        </Square>
+        <Square
+          isSelected={turn === TURNS.O}
+          updateBoard={function (): void {
+            throw new Error('Function not implemented.');
+          }}
+        >
+          {TURNS.O}</Square>
       </section>
+
+      {
+        winner !== null && (
+          <section className="winner">
+            <div className="text">
+              <h2>
+                {
+                  winner.length === 2
+                    ? 'Draw'
+                    : 'The winner is ' + winner
+                }
+              </h2>
+
+              <header className="win">
+                {winner &&
+                  <Square updateBoard={function (): void {
+                    throw new Error('Function not implemented.');
+                  }}>
+                    {winner}
+                  </Square>}
+              </header>
+
+              <footer>
+                <button onClick={resetGame}>
+                  Start again
+                </button>
+              </footer>
+            </div>
+          </section>
+        )
+      }
     </main>
   );
 }
