@@ -44,7 +44,7 @@ function App() {
   const checkWinner = (boardToCheck: string[]): string | null => {
     for (const combo of WINNER_COMBOS) {
       const [a, b, c] = combo;
-      if(boardToCheck[a] && boardToCheck[a] === boardToCheck[b] && boardToCheck[a] === boardToCheck[c]) {
+      if (boardToCheck[a] && boardToCheck[a] === boardToCheck[b] && boardToCheck[a] === boardToCheck[c]) {
         return boardToCheck[a];
       }
     }
@@ -88,8 +88,12 @@ function App() {
       </section>
 
       <section className="turn">
-        <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
-        <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
+        <Square isSelected={turn === TURNS.X} updateBoard={function (): void {
+          throw new Error('Function not implemented.');
+        }}>{TURNS.X}</Square>
+        <Square isSelected={turn === TURNS.O} updateBoard={function (): void {
+          throw new Error('Function not implemented.');
+        }}>{TURNS.O}</Square>
       </section>
     </main>
   );
