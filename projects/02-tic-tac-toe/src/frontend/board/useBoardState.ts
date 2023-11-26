@@ -1,4 +1,4 @@
-import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from "../../domain/board.ts";
+import {Board, boardIsFullFilled, EMPTY_BOARD, fillBoardSquare, squareIsFilled, winner} from "../../domain/board.ts";
 import React from "react";
 import {SHIFTS} from "../../domain/shift.ts";
 
@@ -10,7 +10,7 @@ type BoardState = {
 
 export const useBoard = () => {
   const initialState = {
-    board: {squares: Array(9).fill(null)},
+    board: EMPTY_BOARD,
     shift: SHIFTS.X,
     winner: null
   };

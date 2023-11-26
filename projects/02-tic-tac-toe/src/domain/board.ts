@@ -18,6 +18,10 @@ export const WINNER_COMBOS: number[][] = [
   [2, 4, 6]
 ];
 
+export const EMPTY_BOARD: Board = {
+  squares: Array(9).fill(null)
+}
+
 export function winner(board: Board): string | null {
   for (const combo of WINNER_COMBOS) {
     const [a, b, c] = combo;
