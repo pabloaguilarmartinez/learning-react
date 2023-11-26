@@ -1,6 +1,6 @@
-import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from "../../domain/Board.ts";
+import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from "../../domain/board.ts";
 import React from "react";
-import {SHIFTS} from "../../domain/Shift.ts";
+import {SHIFTS} from "../../domain/shift.ts";
 
 type BoardState = {
   board: Board,

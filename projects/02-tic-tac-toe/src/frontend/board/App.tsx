@@ -1,7 +1,7 @@
 import './App.css';
 import { Square } from '../square/Square.tsx';
 import {useBoard} from "./useBoardState.ts";
-import {SHIFTS} from "../../domain/Shift.ts";
+import {SHIFTS} from "../../domain/shift.ts";
 
 function App() {
   const {
