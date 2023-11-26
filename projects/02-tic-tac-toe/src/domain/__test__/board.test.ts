@@ -1,5 +1,9 @@
-import {boardIsFullFilled, EMPTY_BOARD, fillBoardSquare, winner} from "../board";
+import {Board, boardIsFullFilled, fillBoardSquare, winner} from "../board";
 import {SHIFTS} from "../shift";
+
+const EMPTY_BOARD: Board = {
+  squares: Array(9).fill(null)
+};
 
 describe('Board', () => {
   it('is filled if the value in the square is null', () => {
