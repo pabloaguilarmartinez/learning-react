@@ -1,6 +1,7 @@
 import { Square } from '../square/Square.tsx';
 import {useBoard} from "./useBoardState.ts";
 import {SHIFTS} from "../../domain/shift.ts";
+import confetti from "canvas-confetti";
 
 function App() {
   const {
@@ -10,6 +11,8 @@ function App() {
     updateBoard,
     resetGame
   } = useBoard()
+
+  if(winner && winner.length ===1) confetti();
 
   return (
     <main className="board">

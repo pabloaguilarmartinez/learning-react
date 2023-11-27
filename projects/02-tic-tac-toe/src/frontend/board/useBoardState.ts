@@ -1,7 +1,6 @@
 import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from "../../domain/board.ts";
 import React from "react";
 import {SHIFTS} from "../../domain/shift.ts";
-import confetti from "canvas-confetti";
 
 type BoardState = {
   board: Board,
@@ -22,7 +21,6 @@ export const useBoard = () => {
     const newBoard = fillBoardSquare(state.board, {squareIndex: squareIndex, player: state.shift});
     const newWinner = winner(newBoard)
       || (boardIsFullFilled(newBoard) ? SHIFTS.X.concat(SHIFTS.O) : null);
-    if(newWinner) confetti();
     setState({board: newBoard, shift: changeShift(), winner: newWinner});
   };
 
