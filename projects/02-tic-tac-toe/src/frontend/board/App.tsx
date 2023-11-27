@@ -19,14 +19,14 @@ function App() {
       <h1>Tic tac toe</h1>
       <section className="game">
         {
-          board.squares.map((_, index: number) => {
+          board.squares.map((squareValue: string, index: number) => {
             return (
               <Square
                 key={index}
                 index={index}
                 updateBoard={updateBoard}
               >
-                {board.squares[index]}
+                {squareValue}
               </Square>
             )
           })
