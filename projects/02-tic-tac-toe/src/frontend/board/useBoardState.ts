@@ -14,14 +14,20 @@ export const useBoard = () => {
     shift: SHIFTS.X,
     winner: null
   };
-  const [state, setState] = React.useState<BoardState>(initialState);
+  const [state, setState] = React.useState<BoardState>(() => {
+    const boardFromStorage = window.localStorage.getItem('board');
+    if (boardFromStorage) return JSON.parse(boardFromStorage);
+    return initialState;
+  });
 
   const updateBoard = (squareIndex: number) => {
     if (squareIsFilled(state.board.squares[squareIndex])) return;
     const newBoard = fillBoardSquare(state.board, {squareIndex: squareIndex, player: state.shift});
+    const newShift = changeShift();
     const newWinner = winner(newBoard)
       || (boardIsFullFilled(newBoard) ? SHIFTS.X.concat(SHIFTS.O) : null);
-    setState({board: newBoard, shift: changeShift(), winner: newWinner});
+    window.localStorage.setItem('board', JSON.stringify({board: newBoard, shift: newShift, winner: newWinner}));
+    setState({board: newBoard, shift: newShift, winner: newWinner});
   };
 
   const changeShift = (): string => {
@@ -30,6 +36,7 @@ export const useBoard = () => {
 
   const resetGame = () => {
     setState(initialState);
+    window.localStorage.removeItem("board");
   }
 
   return {
