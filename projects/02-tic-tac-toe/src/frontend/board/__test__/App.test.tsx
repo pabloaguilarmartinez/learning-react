@@ -1,5 +1,6 @@
 import {render, fireEvent, screen, cleanup} from '@testing-library/react';
 import '@testing-library/jest-dom';
+import 'jest-canvas-mock';
 import App from '../App.tsx';
 import * as useBoardState from '../useBoardState.ts';
 

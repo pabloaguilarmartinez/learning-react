@@ -2,6 +2,7 @@ import { Square } from '../square/Square.tsx';
 import {useBoard} from "./useBoardState.ts";
 import {SHIFTS} from "../../domain/shift.ts";
 import confetti from "canvas-confetti";
+import {WinnerModal} from "../winnermodal/WinnerModal.tsx";
 
 function App() {
   const {
@@ -54,27 +55,7 @@ function App() {
           {SHIFTS.O}</Square>
       </section>
 
-      {
-        winner !== null && (
-          <section className="winner">
-            <div className="text">
-              <h2>
-                {
-                  winner.length === 2
-                    ? 'Draw'
-                    : 'The winner is ' + winner
-                }
-              </h2>
-
-              <footer>
-                <button onClick={resetGame}>
-                  Start again
-                </button>
-              </footer>
-            </div>
-          </section>
-        )
-      }
+      <WinnerModal winner={winner} resetGame={resetGame} />
     </main>
   );
 }
