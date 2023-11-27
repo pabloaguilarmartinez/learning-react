@@ -1,6 +1,7 @@
 import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from "../../domain/board.ts";
 import React from "react";
 import {SHIFTS} from "../../domain/shift.ts";
+import {deleteGame, findGame, saveGame} from "../../infraestructure/repository/gameLocalStorageRepository.ts";
 
 type BoardState = {
   board: Board,
@@ -15,7 +16,7 @@ export const useBoard = () => {
     winner: null
   };
   const [state, setState] = React.useState<BoardState>(() => {
-    const boardFromStorage = window.localStorage.getItem('board');
+    const boardFromStorage = findGame();
     if (boardFromStorage) return JSON.parse(boardFromStorage);
     return initialState;
   });
@@ -26,7 +27,7 @@ export const useBoard = () => {
     const newShift = changeShift();
     const newWinner = winner(newBoard)
       || (boardIsFullFilled(newBoard) ? SHIFTS.X.concat(SHIFTS.O) : null);
-    window.localStorage.setItem('board', JSON.stringify({board: newBoard, shift: newShift, winner: newWinner}));
+    saveGame({board: newBoard, shift: newShift, winner: newWinner});
     setState({board: newBoard, shift: newShift, winner: newWinner});
   };
 
@@ -36,7 +37,7 @@ export const useBoard = () => {
 
   const resetGame = () => {
     setState(initialState);
-    window.localStorage.removeItem("board");
+    deleteGame();
   }
 
   return {
