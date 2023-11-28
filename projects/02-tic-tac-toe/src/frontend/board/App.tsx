@@ -1,8 +1,8 @@
 import { Square } from '../square/Square.tsx';
-import {useBoard} from "./useBoardState.ts";
-import {SHIFTS} from "../../domain/shift.ts";
-import confetti from "canvas-confetti";
-import {WinnerModal} from "../winnermodal/WinnerModal.tsx";
+import {useBoard} from './useBoardState.ts';
+import {SHIFTS} from '../../domain/shift.ts';
+import confetti from 'canvas-confetti';
+import {WinnerModal} from '../winnermodal/WinnerModal.tsx';
 
 function App() {
   const {

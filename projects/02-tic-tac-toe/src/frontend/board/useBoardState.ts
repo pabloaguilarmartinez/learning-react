@@ -1,7 +1,7 @@
-import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from "../../domain/board.ts";
-import React from "react";
-import {SHIFTS} from "../../domain/shift.ts";
-import {deleteGame, findGame, saveGame} from "../../infraestructure/repository/gameLocalStorageRepository.ts";
+import {Board, boardIsFullFilled, fillBoardSquare, squareIsFilled, winner} from '../../domain/board.ts';
+import React from 'react';
+import {SHIFTS} from '../../domain/shift.ts';
+import {deleteGame, findGame, saveGame} from '../../infraestructure/repository/gameLocalStorageRepository.ts';
 
 type BoardState = {
   board: Board,
