@@ -1,45 +1,21 @@
-import './App.css'
-import { useEffect, useState } from 'react';
-
-type CatFactResponse = {
-  fact: string;
-  length: number;
-};
-
-type CatImageResponse = {
-  tags: string[];
-  _id: string;
-}
-
-const CAT_ENDPOINT_RANDOM_FACT: string = 'https://catfact.ninja/fact';
-const CAT_PREFIX_IMAGE_URL = 'https://cataas.com';
+import './App.css';
+import { useCatImage } from './hooks/useCatImage.ts';
+import { useCatFact } from './hooks/useCatFact.ts';
 
 function App() {
-  const [fact, setFact] = useState<string>();
-  const [pathImage, setPathImage] = useState<string>();
-  useEffect(() => {
-    fetch(CAT_ENDPOINT_RANDOM_FACT)
-      .then(res => res.json())
-      .then((data: CatFactResponse) => {
-        const { fact } = data;
-        setFact(fact);
-        const threeFirstWords = fact.split(' ', 3).join(' ');
-        fetch(`https://cataas.com/cat/says/${threeFirstWords}?fontSize=50&fontColor=red&json=true`)
-          .then(res => res.json())
-          .then((data: CatImageResponse) => {
-            const { _id } = data;
-            setPathImage(`/cat/${_id}/says/${threeFirstWords}?fontSize=50&fontColor=red`);
-          });
-      });
-  }, []);
+  const { fact, refreshFact } = useCatFact();
+  const { imageUrl } = useCatImage({ fact });
+  const handleClick = () => {
+    refreshFact();
+  };
   return (
     <main>
       <h1>Kitty App</h1>
-      <button>Get new fact</button>
+      <button onClick={handleClick}>Get new fact</button>
       {fact && <p>{fact}</p>}
-      {pathImage &&
+      {imageUrl &&
         <img
-          src={`${CAT_PREFIX_IMAGE_URL}${pathImage}`}
+          src={imageUrl}
           alt={`Image extracted using the first three words of ${fact}`}
         />
       }
