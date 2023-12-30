@@ -4,9 +4,24 @@
   "description": "Learning React from scratch, project-based. It is a multi-package monorepository.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-format": "prettier --config .prettierrc 'projects/**/*.ts' --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloaguilarmartinez/learning-react.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pabloaguilarmartinez/learning-react/issues"
+  },
+  "homepage": "https://github.com/pabloaguilarmartinez/learning-react#readme",
+  "devDependencies": {
+    "prettier": "^3.1.1"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/ts-standard/eslintrc.json"
+  }
 }

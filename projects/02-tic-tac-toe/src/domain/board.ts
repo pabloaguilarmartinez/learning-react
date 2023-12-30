@@ -1,11 +1,11 @@
 export type Board = {
-  readonly squares: string[]
-}
+  readonly squares: string[];
+};
 
 type Movement = {
-  squareIndex: number,
-  player: string
-}
+  squareIndex: number;
+  player: string;
+};
 
 export const WINNER_COMBOS: number[][] = [
   [0, 1, 2],
@@ -15,7 +15,7 @@ export const WINNER_COMBOS: number[][] = [
   [1, 4, 7],
   [2, 5, 8],
   [0, 4, 8],
-  [2, 4, 6]
+  [2, 4, 6],
 ];
 
 export function winner(board: Board): string | null {
@@ -40,5 +40,5 @@ export function squareIsFilled(square: string): boolean {
 }
 
 export function boardIsFullFilled(board: Board): boolean {
-  return board.squares.every((square: string) => square !== null)
+  return board.squares.every((square: string) => square !== null);
 }

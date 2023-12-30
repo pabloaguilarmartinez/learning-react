@@ -1,4 +1,4 @@
-export const SHIFTS: { X: string, O: string } = {
+export const SHIFTS: { X: string; O: string } = {
   X: '❌',
-  O: '⚪'
+  O: '⚪',
 };
