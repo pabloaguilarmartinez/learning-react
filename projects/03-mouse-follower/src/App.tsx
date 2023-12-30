@@ -10,6 +10,7 @@ const initialPosition: Position = { x: 0, y: 0 };
 const FollowMouse = () => {
   const [enabled, setEnabled] = useState<boolean>(false);
   const [position, setPosition] = useState<Position>(initialPosition);
+  // pointer move
   useEffect(() => {
     const handleMove = (event: { clientX: any; clientY: any; }) => {
       const { clientX, clientY } = event;
@@ -22,6 +23,13 @@ const FollowMouse = () => {
     return () => {
       window.removeEventListener('pointermove', handleMove);
       setPosition(initialPosition);
+    };
+  }, [enabled]);
+  // change body className
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled);
+    return () => {
+      document.body.classList.remove('no-cursor')
     };
   }, [enabled]);
   return (
